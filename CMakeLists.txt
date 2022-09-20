@@ -105,8 +105,8 @@ endif ()
 
 add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/agui.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/agui/agui.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/helper.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/agui/helper.hpp)
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/utils.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/agui/utils.hpp)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC imgui)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${stb_SOURCE_DIR})
