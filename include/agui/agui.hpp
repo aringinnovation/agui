@@ -1,14 +1,17 @@
 #ifndef ARING_AGUI_MAIN_
 #define ARING_AGUI_MAIN_
 
+#include "font_awesome.h"
 #include <GLFW/glfw3.h>
-#include <cstdio>
+#include <agui/style.hpp>
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
+#include <cmath>
+#include <cstdio>
 #include <imgui.h>
 #include <iostream>
 #include <string>
-#include <agui/style.hpp>
+#include <agui/font_awesome.h>
 
 namespace aring {
 
@@ -28,6 +31,7 @@ class AGui {
   GLFWwindow* Window();
  private:
   GLFWwindow *window{};
+
 };
 
 }// namespace aring

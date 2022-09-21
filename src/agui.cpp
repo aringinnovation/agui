@@ -48,6 +48,9 @@ AGui::AGui(const std::string &application_title, int width, int height) {
   // Setup Platform/Renderer backends
   ImGui_ImplGlfw_InitForOpenGL(window, true);
   ImGui_ImplOpenGL3_Init(glsl_version);
+
+  // Add all built in fonts
+  ImGui::GetIO().Fonts->AddFontDefault();
 }
 AGui::~AGui() {
 
@@ -89,7 +92,7 @@ void AGui::Run() {
     int display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
-    glClearColor(0,0,0,0); // Wipe background
+    glClearColor(0, 0, 0, 0);// Wipe background
     glClear(GL_COLOR_BUFFER_BIT);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -107,5 +110,6 @@ void AGui::Run() {
 GLFWwindow *AGui::Window() {
   return this->window;
 }
+
 
 }// namespace aring

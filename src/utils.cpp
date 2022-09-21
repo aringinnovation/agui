@@ -5,7 +5,7 @@
 
 namespace aring::agui {
 
-bool Utils::LoadTextureFromFile(const char *filename, ImTextureID *image) {
+bool Utils::LoadTextureFromFile(const char *filename, AGuiTexture *image) {
   int width, height;
   GLuint index;
   unsigned char *image_data = stbi_load(filename, &width, &height, nullptr, 4);
@@ -27,7 +27,10 @@ bool Utils::LoadTextureFromFile(const char *filename, ImTextureID *image) {
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
   stbi_image_free(image_data);
 
-  *image = ( void * ) ( intptr_t ) index;
+  image->im_texture_id = ( void * ) ( intptr_t ) index;
+  image->width = static_cast< float >(width);
+  image->height = static_cast< float >(height);
+
   return true;
 }
 bool Utils::LoadImageFromFile(const char *filename, GLFWimage *output) {
@@ -38,5 +41,17 @@ bool Utils::LoadImageFromFile(const char *filename, GLFWimage *output) {
   if (img == nullptr) return false;
   *output = GLFWimage{width, height, img};
   return true;
+}
+void Utils::DebugMetrics() {
+  auto &res = ImGui::GetWindowViewport()->WorkSize;
+  auto status = std::string(std::to_string(( int ) round(ImGui::GetIO().Framerate))).append("fps");
+  ImGui::GetBackgroundDrawList()->AddText(ImGui::GetIO().Fonts->Fonts[0], 13.0f, ImVec2(res.x - status.length() * 8, res.y - 20), ImColor(100, 100, 100), status.c_str());
+}
+bool Utils::AddFontAwesome(const char *filename, float size) {
+  ImFontConfig config;
+  config.MergeMode = true;
+  config.GlyphMinAdvanceX = size;
+  static const ImWchar icon_ranges[] = {ICON_MIN_FA, ICON_MAX_FA, 0};
+  ImGui::GetIO().Fonts->AddFontFromFileTTF(filename, size, &config, icon_ranges);
 }
 }// namespace aring::agui
