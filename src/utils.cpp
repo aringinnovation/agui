@@ -52,6 +52,6 @@ bool Utils::AddFontAwesome(const char *filename, float size) {
   config.MergeMode = true;
   config.GlyphMinAdvanceX = size;
   static const ImWchar icon_ranges[] = {ICON_MIN_FA, ICON_MAX_FA, 0};
-  ImGui::GetIO().Fonts->AddFontFromFileTTF(filename, size, &config, icon_ranges);
+  return ImGui::GetIO().Fonts->AddFontFromFileTTF(filename, size, &config, icon_ranges) != nullptr;
 }
 }// namespace aring::agui
