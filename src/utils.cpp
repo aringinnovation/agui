@@ -44,16 +44,16 @@ bool Utils::LoadImageFromFile(const char *filename, GLFWimage *output) {
 }
 void Utils::DebugMetrics() {
   auto &res = ImGui::GetWindowViewport()->WorkSize;
-  auto draw_list = ImGui::GetBackgroundDrawList();
+  auto draw_list = ImGui::GetForegroundDrawList();
 
   auto status = std::string(std::to_string(( int ) round(ImGui::GetIO().Framerate))).append("fps");
   auto resolution = std::string(std::to_string(( int ) res.x)).append("x").append(std::to_string(( int ) res.y));
 
-  float fps_start = res.x - static_cast<float>((status.length() * 8));
+  float fps_start = res.x - static_cast<float>((status.length() * 9));
   float resolution_start = fps_start - static_cast<float>((resolution.length()*8));
 
-  draw_list->AddText(ImGui::GetIO().Fonts->Fonts[0], 13.0f, ImVec2(fps_start, res.y - 15), ImColor(100, 100, 100), status.c_str());
-  draw_list->AddText(ImGui::GetIO().Fonts->Fonts[0], 13.0f, ImVec2(resolution_start, res.y - 15), ImColor(100, 100, 100), resolution.c_str());
+  draw_list->AddText(ImGui::GetIO().Fonts->Fonts[0], 13.0f, ImVec2(fps_start,8), ImColor(100, 100, 100), status.c_str());
+  draw_list->AddText(ImGui::GetIO().Fonts->Fonts[0], 13.0f, ImVec2(resolution_start, 8), ImColor(100, 100, 100), resolution.c_str());
 }
 bool Utils::AddFontAwesome(const char *filename, float size) {
   ImFontConfig config;

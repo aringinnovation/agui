@@ -92,7 +92,7 @@ void AGui::Run() {
     int display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
-    glClearColor(0, 0, 0, 0);// Wipe background
+    glClearColor(0.04, 0.04, 0.04, 0);
     glClear(GL_COLOR_BUFFER_BIT);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
