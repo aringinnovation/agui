@@ -18,7 +18,7 @@ class MyApp : public aring::AGui {
 
     auto &image = this->images[0];
 
-    draw->AddImage(image.im_texture_id, ImVec2(image.width, image.height), ImVec2(100, 100), ImVec2(1, 1), ImVec2(0, 0));
+    draw->AddImage(image.im_texture_id, ImVec2(image.width, image.height), ImVec2(0,0), ImVec2(1, 1), ImVec2(0, 0));
     draw->AddText(ImVec2(100, 100), ImColor(255, 0, 0), "Status Background");
     drawf->AddText(ImVec2(120, 120), ImColor(255, 0, 0), "Status Foreground");
 
