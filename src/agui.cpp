@@ -92,7 +92,7 @@ void AGui::Run() {
     int display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
-    glClearColor(0.04, 0.04, 0.04, 0);
+    glClearColor(bg_color_.Value.x, bg_color_.Value.y, bg_color_.Value.z, bg_color_.Value.w);
     glClear(GL_COLOR_BUFFER_BIT);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -110,6 +110,8 @@ void AGui::Run() {
 GLFWwindow *AGui::Window() {
   return this->window;
 }
-
+void AGui::SetBackgroundColor(ImColor background_color) {
+  this->bg_color_ = background_color;
+}
 
 }// namespace aring

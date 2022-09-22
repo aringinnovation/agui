@@ -28,9 +28,12 @@ class AGui {
   virtual void Update(){};
   virtual void StartUp(){};
 
+ protected:
+  void SetBackgroundColor(ImColor background_color);
   GLFWwindow* Window();
  private:
   GLFWwindow *window{};
+  ImColor bg_color_{0.0F, 0.0F, 0.0F, 0.0F};
 
 };
 
